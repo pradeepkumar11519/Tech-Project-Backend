@@ -7,7 +7,7 @@
             "config":{"maxLambdaSize":"15mb","runtime":"python3.11"}
         }
     ],
-    "router":[
+    "routes":[
         {
             "src":"/(.*)",
             "dest":"backend/wsgi.py"
