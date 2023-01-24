@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'api',
+    'api.apps.ApiConfig',
+    'django_crontab',
     'rest_framework',
     'corsheaders',
 ]
@@ -184,3 +185,7 @@ SIMPLE_JWT = {
     'AUTH_COOKIE_PATH': '/',        # The path of the auth cookie.
     'AUTH_COOKIE_SAMESITE': 'None',  # Whether to set the flag restricting cookie leaks on cross-site requests. This can be 'Lax', 'Strict', or None to disable the flag.
 }
+
+
+
+ALLOW_PARALLEL_RUNS = True

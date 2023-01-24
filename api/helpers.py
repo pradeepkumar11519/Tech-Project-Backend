@@ -4,7 +4,7 @@ import json
 from backend.settings import calender_list
 from bs4 import BeautifulSoup
 from apscheduler.schedulers.background import BackgroundScheduler
-
+import time
 import requests
 from .thread import *
 def getdate():
@@ -54,6 +54,8 @@ def do_something():
 
 def start():
         scheduler = BackgroundScheduler()
-        x = CreateContestsThread(100,calender_list)
-        scheduler.add_job(do_something,"interval",days=1,id="Scrapping_001",replace_existing=True)
+        
+        scheduler.add_job(do_something,"interval",hours=1,id="Scrapping_001",replace_existing=True)
         scheduler.start()
+        
+        

@@ -24,6 +24,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support import expected_conditions as EC
 import datetime
+from django_cron import CronJobBase, Schedule
+
 def get_contest_month_name(month_num):
     month_name = datetime.datetime(1, int(month_num), 1).strftime("%b")
     return month_name
@@ -32,11 +34,9 @@ def get_contest_month_name(month_num):
 
 
 
-class CreateContestsThread(threading.Thread):
-    def __init__(self,total,calender_id_list):
-        self.calender_id_list = calender_id_list
-        self.total = total
-        threading.Thread.__init__(self)
+class CreateContestsThread:
+    def __init__(self):
+        pass
     def codeforces(self):
             html = requests.get('https://codeforces.com/contests').text
             soup = BeautifulSoup(html, 'lxml')
@@ -194,5 +194,3 @@ class CreateContestsThread(threading.Thread):
         self.Add_To_Calender()
         # self.codechef()
         return None
-    def join(self):
-        c = threading.Thread.join(self)

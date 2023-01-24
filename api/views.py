@@ -27,7 +27,7 @@ class Scrap_Data_And_Add_To_Data(APIView):
         start_time = time.time()
         Contests.objects.all().delete()
         Calender.objects.all().delete()
-        x = CreateContestsThread(100,calender_list)
+        x = CreateContestsThread()
         x.run()
         print("--- %s seconds ---" % (time.time() - start_time))
         return Response("Process Done Succesfully",status=status.HTTP_200_OK)
