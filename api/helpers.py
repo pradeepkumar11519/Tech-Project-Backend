@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 from apscheduler.schedulers.background import BackgroundScheduler
 import time
 import requests
+import schedule
 from .thread import *
 def getdate():
     today = date.today()
@@ -53,9 +54,6 @@ def do_something():
         return 
 
 def start():
-        scheduler = BackgroundScheduler()
-        
-        scheduler.add_job(do_something,"interval",hours=1,id="Scrapping_001",replace_existing=True)
-        scheduler.start()
+        schedule.every(10).seconds.do(do_something)
         
         

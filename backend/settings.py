@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'api.apps.ApiConfig',
     'django_crontab',
+     'django_q',
     'rest_framework',
     'corsheaders',
 ]
@@ -189,3 +190,16 @@ SIMPLE_JWT = {
 
 
 ALLOW_PARALLEL_RUNS = True
+CRONJOBS = [
+    ('*/1 * * * *', 'api.cron.do')
+]
+
+
+Q_CLUSTER = {
+    'orm': 'default',  # should use django's ORM and database as a broker.
+    'workers': 4,
+    'timeout': 30,
+    'retry': 60,
+    'queue_limit': 50,
+    'bulk': 10,
+}
