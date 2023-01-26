@@ -54,6 +54,9 @@ def do_something():
         return 
 
 def start():
-        schedule.every(10).seconds.do(do_something)
+        scheduler = BackgroundScheduler()
+     
+        scheduler.add_job(do_something,"interval",hours=1,id="job_001",replace_existing=True)
+        scheduler.start()
         
         
