@@ -17,7 +17,6 @@ class ApiConfig(AppConfig):
         x = CreateContestsThread()
         x.run()
         print("Scraping Started")
-        start()
         
 # Schedule.objects.create(
 #     func='api.helpers.do_something',  # module and func to run
